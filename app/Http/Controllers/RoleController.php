@@ -13,17 +13,29 @@ class RoleController extends Controller
 {
     //to veiw role add from
     function addform(){
-        return view('role.add');
+        $all_role = Role::all();
+        return view('role.add',compact('all_role'));
     }
     function storerole(Request $request){
         $request->validate([
             'role' => 'required',
         ]);
-        $role = Str::lower($request->role);
+        $role = Str::upper($request->role);
 
-        Role::insert([
-            'role'=> $role,
-            'created_at'=> Carbon::now(),
-        ]);
+        if(Role::where('role', "=" , $role)-> doesntExist()){
+            Role::insert([
+                'role'=> $role,
+                'created_at'=> Carbon::now(),
+            ]);
+        }else{
+            return back()->with('insErr', 'already registered');
+        }
+
+        return back();
     }
+
+
+
+
+
 }
