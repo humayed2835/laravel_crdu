@@ -18,6 +18,7 @@ class CreateCategoriesTable extends Migration
             $table->string('category_name');
             $table->integer('status')-> default(1);
             $table->integer('added_by');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

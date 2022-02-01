@@ -11,34 +11,32 @@
                         role add form
                     </div>
                     <div class="card-body">
+                    @if(session('delDone'))
+
+                    <div class="alert alert-danger" role="alert">
+                    {{ session('delDone') }}
+                    </div>
+
+                    @endif
+
+
                       <table class="table table-bordered table-responsive">
                           <thead>
                               <th>Serial</th>
                               <th>Category Name</th>
-                              <th>Status</th>
-                              <th>Created at</th> 
-                              <th>Added By</th> 
                               <th>Action</th>
                           </thead>
                           <tbody>
-                              @forelse($all_categorys as $categorys)
+                              @forelse($all_trashed as $trashed_category)
                                 <tr>
                                     <td>{{ $loop->index + 1 }}</td>
-                                    <td>{{ $categorys->category_name }}</td>
-                                    <td>
-                                        @if($categorys->status == 1)
-                                            <span class="badge bg-success">active</span>
-                                            @else
-                                            <span class="badge bg-danger">Deactive</span>
-                                        @endif
-                                    </td>
-                                    <td>{{ $categorys->created_at->format('d-M-Y') }}</td>  
-                                    <td>{{ $categorys->relationToUser->name }}</td>
+                                    <td>{{ $trashed_category->category_name }}</td>
                                     <!-- diffForHumans() -->
                                     <td>
                                     <div class="btn-group" role="group" aria-label="Basic example">
-                                        <a href="{{ url('/category/edit') }}/{{ $categorys->id }}" class="btn btn-primary btn-sm">Edit</a>
-                                        <a href="{{ url('/category/delete') }}/{{ $categorys->id }}" class="btn btn-danger btn-sm">Delete</a>
+                                        <a href="{{ url('/category/restore') }}/{{ $trashed_category->id }}" class="btn btn-primary btn-sm">Restore</a>
+
+                                        <a href="{{ url('/category/vanish') }}/{{ $trashed_category->id }} " class="btn btn-danger btn-sm">Delete</a>
                                     </div>
                                     </td>
                                 </tr>

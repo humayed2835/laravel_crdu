@@ -11,6 +11,11 @@ use Carbon\Carbon;
 
 class RoleController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     //to veiw role add from
     function addform(){
         $all_role = Role::all();

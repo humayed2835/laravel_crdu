@@ -1,11 +1,11 @@
 <?php
 
-use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\RoleController;
-use App\Http\Controllers\HomeController;
+
+use App\Http\Controllers\{RoleController,HomeController,CategoryController};
 
 
+ 
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -37,9 +37,26 @@ Route::post('/role/add', [RoleController::class, 'storerole']);
 // all user role routes Ends
 
 // all user Category routes starts
-Route::get('/category/create',[CategoryController::class,'create']);
-Route::post('/category/store',[CategoryController::class,'store']);
-// all user Category routes Ends
+Route::prefix('category')->group(function(){
+ Route::get('/create', [CategoryController::class, 'create']);
+ Route::post('/store',[CategoryController::class,'store']);
+ Route::get('/index',[CategoryController::class,'index'])->name('category.index');
+ Route::get('/delete/{id}',[CategoryController::class, 'destroy'])->name('category.destroy');
+ Route::get('/trashed',[CategoryController::class,'deletedCategory'])->name('category.trashed');
+ Route::get('/restore/{id}',[CategoryController::class,'categoryrestore'])->name('category.restore'); 
+ Route::get('/vanish/{id}',[CategoryController::class,'vanish'])->name('category.force'); 
+ Route::get('/edit/{id}',[CategoryController::class,'edit']); 
+ Route::post('/update',[CategoryController::class,'update'])->name('category.update'); 
+ // all user Category routes Ends
+});
+
+
+ Route::get('/user/dashboard',function(){
+     return "your dashboard pore";
+ });
+
+
+
 
 
 
