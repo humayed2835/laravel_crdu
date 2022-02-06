@@ -1,17 +1,16 @@
-@extends('layouts.app')
+@extends('dashboard.dashboard_master')
 
 @section('content')
 
-    <div class="container">
         <div class="row">
             
             <div class="col-lg-8 m-auto">
             <div class="card">
                     <div class="card-header">
-                        role add form
+                       Category add form
                     </div>
                     <div class="card-body">
-                      <table class="table table-bordered table-responsive">
+                      <table class="table table-bordered">
                           <thead>
                               <th>Serial</th>
                               <th>Category Name</th>
@@ -22,7 +21,7 @@
                           </thead>
                           <tbody>
                               @forelse($all_categorys as $categorys)
-                                <tr>
+                                <tr> 
                                     <td>{{ $loop->index + 1 }}</td>
                                     <td>{{ $categorys->category_name }}</td>
                                     <td>
@@ -53,6 +52,5 @@
                 </div>
             </div>
         </div>
-    </div>
 
 @endsection

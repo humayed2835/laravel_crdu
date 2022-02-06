@@ -1,14 +1,13 @@
-@extends('layouts.app')
+@extends('dashboard.dashboard_master')
 
 @section('content')
 
-    <div class="container">
         <div class="row">
             
             <div class="col-lg-8 m-auto">
             <div class="card">
                     <div class="card-header">
-                        role add form
+                        Deleted Category
                     </div>
                     <div class="card-body">
                     @if(session('delDone'))
@@ -20,7 +19,7 @@
                     @endif
 
 
-                      <table class="table table-bordered table-responsive">
+                      <table class="table table-bordered ">
                           <thead>
                               <th>Serial</th>
                               <th>Category Name</th>
@@ -51,6 +50,5 @@
                 </div>
             </div>
         </div>
-    </div>
 
 @endsection

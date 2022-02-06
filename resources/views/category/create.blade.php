@@ -1,10 +1,9 @@
-@extends('layouts.app')
+@extends('dashboard.dashboard_master')
  
 @section('content')
 
-    <div class="container">
         <div class="row">
-            <div class="col-lg-5 m-auto">
+            <div class="col-lg-6 m-auto">
                 <div class="card">
                     <div class="card-header">
                         Category add form
@@ -43,6 +42,6 @@
             </div>
             
         </div>
-    </div>
+
 
 @endsection

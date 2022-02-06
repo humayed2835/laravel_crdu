@@ -17,7 +17,7 @@ class category extends Model
     protected $fillable = ['category_name'];
     
     public function relationToUser()
-    {
+    { 
         return $this->belongsTo(User::class, 'added_by' , 'id');
     }
 }
