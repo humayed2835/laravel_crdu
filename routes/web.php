@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\{RoleController,HomeController,CategoryController,subcategoryController};
+use App\Http\Controllers\{RoleController,HomeController,CategoryController,subcategoryController,ProductController,FrontendController,BannerController};
 
 
  
@@ -16,10 +16,7 @@ use App\Http\Controllers\{RoleController,HomeController,CategoryController,subca
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/',[FrontendController::class, 'index']);
 
 Auth::routes(); 
 
@@ -59,10 +56,24 @@ Route::prefix('subcategory')->group(function(){
     Route::post('/store',[subcategoryController::class, 'store'])->name('subcategory.store');
     Route::get('/index',[subcategoryController::class, 'index'])->name('subcategory.index');
 });
-
-
 // all subcategory ends
 
+// all products starts
+Route::prefix('product')->group(function(){
+    Route::get('create', [ProductController::class, 'create'])->name('product.create');
+    Route::post('store', [ProductController::class, 'store'])->name('product.store');
+    Route::get('index', [ProductController::class, 'index'])->name('product.index');
+    Route::get('/edit/{id}', [ProductController::class, 'edit'])->name('product.edit');
+    Route::get('/delete/{id}', [ProductController::class, 'delete'])->name('product.delete');
+    Route::post('update', [ProductController::class, 'update'])->name('product.update');
+});    
+// all products ends
+// all-Banner-part
+Route::prefix('banner')->group(function(){
+    Route::get('create', [BannerController::class, 'create'])->name('banner.create');
+    Route::post('store', [BannerController::class, 'store'])->name('banner.store');
+}); 
+// all-Banner-part 
 
  Route::get('/user/dashboard',function(){
      return "your dashboard pore";

@@ -18,6 +18,11 @@
     <link rel="stylesheet" href="{{ asset('backend') }}/assets/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="{{ asset('backend') }}/assets/vendor/charts/c3charts/c3.css">
     <link rel="stylesheet" href="{{ asset('backend') }}/assets/vendor/fonts/flag-icon-css/flag-icon.min.css">
+    <!--====== select2 ====== -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <!--====== select2 ====== -->
+
+
     <title>Concept - Bootstrap 4 Admin Dashboard Template</title>
 </head>
  
@@ -161,7 +166,7 @@
                                 Menu
                             </li>
                              
-                            <!-- Category-stars -->
+                            <!--===== Category-stars =====-->
 
                             <li class="nav-item">
                                 <a href="{{ route('home') }}" class="nav-link">Dashboard</a>
@@ -185,9 +190,9 @@
                                 </div>
                             </li>
 
-                            <!-- Category-ens -->
+                            <!--==== Category-ens =====-->
 
-                            <!-- sub-category -->
+                            <!--===== sub-category ======-->
 
                             <li class="nav-item ">
                                 <a class="nav-link active" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-2" aria-controls="submenu-2"><i class="fa fa-fw fa-user-circle"></i>Sub Category <span class="badge badge-success">6</span></a>
@@ -205,7 +210,39 @@
                                 </div>
                             </li>
 
-                            <!-- sub-category-ends -->
+                            <!--===== sub-category-ends ====== -->
+
+                            <!--===== Product-starts ====== -->
+                            <li class="nav-item ">
+                                <a class="nav-link active" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-3" aria-controls="submenu-3"><i class="fa fa-fw fa-user-circle"></i>Product <span class="badge badge-success">6</span></a>
+                                <div id="submenu-3" class="collapse submenu" style="">
+                                    <ul class="nav flex-column">
+                                       
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{{ route('product.create') }}">Add Product</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{{ route('product.index') }}">View Product</a>
+                                        </li>
+                            
+                                    </ul>
+                                </div>
+                            </li>
+                            <!--===== Product-ends ====== -->
+                            <!-- ======= Banners-start ====== -->
+                            <li class="nav-item ">
+                                <a class="nav-link active" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-4" aria-controls="submenu-4"><i class="fa fa-fw fa-user-circle"></i>Banner <span class="badge badge-success">6</span></a>
+                                <div id="submenu-4" class="collapse submenu" style="">
+                                    <ul class="nav flex-column">
+                                       
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{{ route('banner.create') }}">Add Banner</a>
+                                        </li>
+                            
+                                    </ul>
+                                </div>
+                            </li>
+                            <!-- ======= Banners-ends ====== -->
 
                         </ul>
                     </div>
@@ -282,6 +319,12 @@
     <script src="{{ asset('backend') }}/assets/vendor/charts/c3charts/d3-5.4.0.min.js"></script>
     <script src="{{ asset('backend') }}/assets/vendor/charts/c3charts/C3chartjs.js"></script>
     <script src="{{ asset('backend') }}/assets/libs/js/dashboard-ecommerce.js"></script>
+    <!--====== select2 ====== -->
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <!--====== select2 ====== -->
+
+    @yield('footer_script')
+
 </body>
  
 </html>
